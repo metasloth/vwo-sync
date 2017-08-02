@@ -1,0 +1,19 @@
+{
+  "name": "vwno",
+  "version": "0.0.1",
+  "description": "Update your VWO variations from local files in real-time",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "Sam Hemann",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/metasloth/vwo-sync.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^4.5.3",
+    "request": "^2.81.0"
+  }
+}

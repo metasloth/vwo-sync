@@ -1,0 +1,22 @@
+{
+  "vwoToken": "",
+  "vwoAccount": "",
+  "vwoTest": "",
+  "variations": [{
+    "variation": 2,
+    "js": "path/to/js.js",
+    "css": "path/to/css-or-scss",
+    "other": [
+      "/path/to/_watch-file-3",
+      "/path/to/_watch-file-2"
+    ]
+  }, {
+    "variation": 3,
+    "js": "path/to/js.js",
+    "css": "path/to/css-or-scss",
+    "other": [
+      "/path/to/_watch-file-3",
+      "/path/to/_watch-file-2"
+    ]
+  }]
+}
