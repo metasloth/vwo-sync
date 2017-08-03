@@ -41,7 +41,7 @@ for (let i = 0; i < config.variations.length; ++i) {
   fs.watchFile(config.variations[i].css, { interval: 500 }, function() {
     saveVariation(i)
   })
-  if (config.variations[i].other.length){
+  if (config.variations[i].other){
     for (let j=0; j < config.variations[i].other.length; ++j){
       fs.watchFile(config.variations[i].other[j], { interval: 500 }, function() {
         saveVariation(i)
