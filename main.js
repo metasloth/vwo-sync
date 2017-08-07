@@ -1,8 +1,6 @@
 const fs = require('fs')
 const request = require('request')
 const sass = require('node-sass')
-//const config = require('./config.json')
-//const config = require('../dev/bap-mob-home2/vwo.config.json')
 
 // Check configuration file
 let configPath
@@ -18,14 +16,13 @@ if (configPath.substring(0, 1) === '.') {
   configPath = process.cwd() + configPath.substring(1)
 }
 
-console.log('Verifying Configuration File' + configPath);
+//console.log('Verifying Configuration File');
 
 if (fs.existsSync(configPath)) {
   config = require(configPath);
   if (process.argv.indexOf('-i') > -1) {
     showInfo()
-  }
-  if (process.argv.indexOf('-s') > -1) {
+  } else if (process.argv.indexOf('-s') > -1) {
     saveOnce()
   } else {
     startWatching()
@@ -56,7 +53,7 @@ function saveVariation(index) {
         if (err) {
           console.log('Could not update vwo variation!\n ', err)
         } else {
-          console.log('Updated Variation "', JSON.parse(body)._data.name.trim(), '"')
+          console.log('Updated Variation ' + JSON.parse(body)._data.name.trim())
         }
       }
     )
@@ -88,8 +85,39 @@ function saveOnce() {
     saveVariation(i)
   }
 }
-
+//let url = 'https://app.vwo.com/api/v2/accounts/' + config.vwoAccount + '/campaigns/' + config.vwoTest + '/variations/' + config.variations[index].variation
 function showInfo() {
-  console.log('Checking Files');
-
+  let url = 'https://app.vwo.com/api/v2/accounts/' + config.vwoAccount
+  request({
+    method: 'GET',
+    uri: url,
+    headers: {
+      'token': config.vwoToken
+    },
+  },
+    function (err, res, body) {
+      if (err) {
+        console.log('Error! Could not get information from VWO\n ', err)
+      } else {
+        console.log('Account: ' + JSON.parse(body)._data.name.trim())
+      }
+    }
+  )
+   url = 'https://app.vwo.com/api/v2/accounts/' + config.vwoAccount +'/campaigns/' + config.vwoTest
+  request({
+    method: 'GET',
+    uri: url,
+    headers: {
+      'token': config.vwoToken
+    },
+  },
+    function (err, res, body) {
+      if (err) {
+        console.log('Error! Could not get information from VWO\n ', err)
+      } else {
+        console.log('Campaign: ' + JSON.parse(body)._data.name.trim())
+      }
+    }
+  )
+  
 }
