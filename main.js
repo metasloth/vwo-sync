@@ -93,10 +93,10 @@ function saveOnce() {
 // Log configured account and campaign information
 // TODO: use promises to avoid callback hell
 function showInfo() {
-  let url = 'https://app.vwo.com/api/v2/accounts/' + config.vwoAccount
+  let acctUrl = 'https://app.vwo.com/api/v2/accounts/' + config.vwoAccount
   request({
       method: 'GET',
-      uri: url,
+      uri: acctUrl,
       headers: {
         'token': config.vwoToken
       },
@@ -106,14 +106,13 @@ function showInfo() {
         console.log('Error! Could not get information from VWO\n ', err)
       } else {
         console.log('Account: ' + JSON.parse(body)._data.name.trim())
-
       }
     }
   )
-  url = 'https://app.vwo.com/api/v2/accounts/' + config.vwoAccount + '/campaigns/' + config.vwoTest
+  let campUrl = 'https://app.vwo.com/api/v2/accounts/' + config.vwoAccount + '/campaigns/' + config.vwoTest
   request({
       method: 'GET',
-      uri: url,
+      uri: campUrl,
       headers: {
         'token': config.vwoToken
       },
@@ -121,11 +120,9 @@ function showInfo() {
     function(err, res, body) {
       if (err) {
         console.log('Error! Could not get information from VWO\n ', err)
-      } else {
+      } else if (body) {
         console.log('Campaign: ' + JSON.parse(body)._data.name.trim())
       }
     }
   )
-
-
 }
