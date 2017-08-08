@@ -90,7 +90,7 @@ function saveOnce() {
   }
 }
 
-// Display configured account and campaign information
+// Log configured account and campaign information
 // TODO: use promises to avoid callback hell
 function showInfo() {
   let url = 'https://app.vwo.com/api/v2/accounts/' + config.vwoAccount
