@@ -22,7 +22,7 @@ if (configPath.substring(0, 1) === '.') {
 if (fs.existsSync(configPath)) {
   config = require(configPath);
   if (process.argv.indexOf('-i') > -1) {
-    showInfo()
+    showCampaign()
   } else if (process.argv.indexOf('-s') > -1) {
     saveOnce()
   } else {
@@ -90,27 +90,10 @@ function saveOnce() {
   }
 }
 
-// Log configured account and campaign information
-// TODO: use promises to avoid callback hell
-function showInfo() {
-  let acctUrl = 'https://app.vwo.com/api/v2/accounts/' + config.vwoAccount
-  request({
-      method: 'GET',
-      uri: acctUrl,
-      headers: {
-        'token': config.vwoToken
-      },
-    },
-    function(err, res, body) {
-      if (err) {
-        console.log('Error! Could not get information from VWO\n ', err)
-      } else {
-        console.log('Account: ' + JSON.parse(body)._data.name.trim())
-      }
-    }
-  )
+// Log campaign name
+function showCampaign(){
   let campUrl = 'https://app.vwo.com/api/v2/accounts/' + config.vwoAccount + '/campaigns/' + config.vwoTest
-  request({
+  var camp = request({
       method: 'GET',
       uri: campUrl,
       headers: {
@@ -121,7 +104,11 @@ function showInfo() {
       if (err) {
         console.log('Error! Could not get information from VWO\n ', err)
       } else if (body) {
+        try{
         console.log('Campaign: ' + JSON.parse(body)._data.name.trim())
+        } catch(err){
+          console.log(res)
+        }
       }
     }
   )
