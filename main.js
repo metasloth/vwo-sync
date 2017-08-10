@@ -4,6 +4,8 @@ const sass = require('node-sass')
 
 let configPath
 let config
+let jsFile
+let cssFile
 
 // Check for the optional 'c' flag, which is followed by a path to the configuration file
 // If the 'c' flag is not present, the first argument is assumed to be the configuration file
@@ -21,11 +23,31 @@ if (configPath.substring(0, 1) === '.') {
 // Verify the configuration file exists and 
 if (fs.existsSync(configPath)) {
   config = require(configPath);
+  // Verify provided files
+  for (let i = 0; i < config.variations.length; ++i) {
+    if (!fs.existsSync(config.variations[i].js)){
+      console.log('Error! The provided js file:\n\t"' + config.variations[i].js + '"\n for Variation ' + config.variations[i].variation + ' could not be found.')
+      break
+    }
+    if (!fs.existsSync(config.variations[i].css)){
+      console.log('Error! The provided css file:\n\t"' + config.variations[i].css + '"\n for Variation ' + config.variations[i].variation + ' could not be found.')
+      break
+    }
+    if (config.variations[i].other) {
+      for (let j = 0; j < config.variations[i].other.length; ++j) {
+        if (!fs.existsSync(config.variations[i].other[j])){
+          console.log('Error! The provided file:\n\t"' + config.variations[i].other[j] + '"\n for Variation ' + config.variations[i].variation + ' could not be found.')
+          break
+        }
+      }
+    }
+  }
   if (process.argv.indexOf('-i') > -1) {
     showCampaign()
   } else if (process.argv.indexOf('-s') > -1) {
     saveOnce()
   } else {
+    showCampaign()
     startWatching()
   }
 } else {
