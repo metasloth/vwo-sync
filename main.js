@@ -55,7 +55,11 @@ function saveVariation(index) {
         if (err) {
           console.log('Could not update vwo variation!\n ', err)
         } else {
-          console.log(new Date().toLocaleTimeString() + ' - Updated Variation ' + JSON.parse(body)._data.name.trim())
+          try{
+            console.log(new Date().toLocaleTimeString() + ' - Updated Variation ' + JSON.parse(body)._data.name.trim())
+          } catch(err) {
+            console.log(JSON.parse(body))
+          }
         }
       }
     )
