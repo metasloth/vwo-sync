@@ -1,19 +1,24 @@
 {
-  "name": "vwno",
-  "version": "0.0.1",
-  "description": "Update your VWO variations from local files in real-time",
-  "main": "main.js",
-  "scripts": {
-    "start": "node main.js"
-  },
-  "author": "Sam Hemann",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/metasloth/vwo-sync.git"
-  },
-  "license": "MIT",
+  "name": "vwo-sync",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "node-sass": "^4.5.3",
-    "request": "^2.81.0"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.12"
+  },
+  "main": "src/electron-starter.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "dev": "nf start"
+  },
+  "devDependencies": {
+    "electron": "^1.7.5",
+    "foreman": "^2.0.0"
   }
 }
