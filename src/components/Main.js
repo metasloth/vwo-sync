@@ -12,9 +12,11 @@ localStorage.setItem('userVerified', 'false')
 
 const Main = () => (
   <main>
-    <Link to='/'>Home</Link><br/>
-    <Link to='/verify'>Verify</Link><br/>
-    <Link to='/dashboard'>Dashboard</Link>
+    <div className='mainRoutes'>
+      <Link to='/'>Home</Link>
+      <Link to='/verify'>Verify</Link>
+      <Link to='/dashboard'>Dashboard</Link>
+    </div>
     <Switch>
       <Route exact path='/' render={()=> (
         localStorage.getItem('userVerified') === 'true' ? (

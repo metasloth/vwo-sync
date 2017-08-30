@@ -1,12 +1,15 @@
 import React from 'react'
+import './Verify.css'
 
 const Verify = () => (
-  <div>
-    <p className="App-intro">
-      Login Using Your VWO User Token
-    </p>
-    <input type="text" placeholder="VWO Token"/>
-    <button >Log In </button>
+  <div className="verify-wrap">
+    <div className="verify">
+      <p className="App-intro">
+        Login With Your VWO User Token
+      </p>
+      <input type="text" placeholder="VWO Token"/>
+      <button >Log In </button>
+    </div>
   </div>
 )
 
