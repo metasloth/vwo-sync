@@ -1,14 +1,7 @@
 import React from 'react'
 import { Switch, Route, Link, Redirect } from 'react-router-dom'
-import Verify from './Verify'
+import Verify from './verify/verify.js'
 import Dashboard from './Dashboard'
-
-//const electron = window.require('electron');
-// const fs = electron.remote.require('fs');
-// const ipcRenderer  = electron.ipcRenderer;
-
-localStorage.setItem('userVerified', 'false')
-
 
 const Main = () => (
   <main>

@@ -3,6 +3,8 @@ const electron = require('electron')
 const app = electron.app
   // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
+// Module for cross-process communication
+const ipc = require('electron').ipcMain
 
 const path = require('path')
 const url = require('url')
@@ -18,7 +20,10 @@ function createWindow() {
     height: 600,
     minWidth: 400,
     minHeight: 400,
-    icon: path.join(__dirname, '../public/favicon.ico')
+    icon: path.join(__dirname, '../public/favicon.ico'),
+    webPreferences: {
+      webSecurity: false
+    }
   })
 
   // and load the index.html of the app.
@@ -60,3 +65,7 @@ app.on('activate', function() {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+ipc.on('asynchronous-message', function (event, arg) {
+  event.sender.send('asynchronous-reply', 'pong')
+})
