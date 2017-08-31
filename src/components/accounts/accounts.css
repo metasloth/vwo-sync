@@ -1,0 +1,28 @@
+.account-wrap{
+  padding: 20px;
+}
+
+.account{
+  height: auto;
+  background: rgba(255, 255, 255, 0.60);
+  border-radius: 10px;
+  margin: 10px 0px
+}
+
+.account:hover{
+  cursor: pointer;
+  background: rgba(124, 81, 255, 0.60);
+}
+
+.account p{
+  display: inline-block;
+  margin: 10px;
+  
+}
+.account p:first-child{
+  clear:left;
+}
+
+.account .account-name{
+  font-size: 20px;
+}
