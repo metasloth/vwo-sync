@@ -1,0 +1,30 @@
+.variation-wrap{
+  padding: 20px;
+  width: 30%;
+  float: left
+}
+
+.variation{
+  height: auto;
+  background: rgba(255, 255, 255, 0.60);
+  border-radius: 10px;
+  margin: 10px 0px
+}
+
+.variation:hover{
+  cursor: pointer;
+  background: rgba(124, 81, 255, 0.60);
+}
+
+.variation p{
+  display: inline-block;
+  margin: 10px;
+  
+}
+.variation p:first-child{
+  clear:left;
+}
+
+.variation .variation-name{
+  font-size: 20px;
+}

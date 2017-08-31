@@ -1,0 +1,28 @@
+.campaign-wrap{
+  padding: 20px;
+}
+
+.campaign{
+  height: auto;
+  background: rgba(255, 255, 255, 0.60);
+  border-radius: 10px;
+  margin: 10px 0px
+}
+
+.campaign:hover{
+  cursor: pointer;
+  background: rgba(124, 81, 255, 0.60);
+}
+
+.campaign p{
+  display: inline-block;
+  margin: 10px;
+  
+}
+.campaign p:first-child{
+  clear:left;
+}
+
+.campaign .campaign-name{
+  font-size: 20px;
+}
