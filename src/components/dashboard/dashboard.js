@@ -1,5 +1,6 @@
 import React from 'react'
-import './Dashboard.css'
+import './dashboard.css'
+
 const Dashboard = () => (
   <div className="dashboard">
     <h1>This is the dashboard route</h1>
