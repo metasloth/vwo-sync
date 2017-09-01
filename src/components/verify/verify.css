@@ -1,10 +1,16 @@
-
+.verify-wrap{
+  position: absolute;
+  top: -70px;
+  height: 100%;
+  width: 100%;
+  background: red
+}
 .verify{
   position: absolute;
   top: 50%;
   left: 50%;
   margin: auto;
-  transform: translateY(-50%) translateX(-50%);
+  transform: translateY(75%) translateX(-50%);
   background: rgba(0,0,0,0.4);
   border-radius: 3px;
   padding: 40px;
@@ -21,7 +27,7 @@
     opacity: 0;
   }
   100%{
-    transform: translateY(-50%) translateX(-50%);
+    transform: translateY(75%) translateX(-50%);
   }
 }
 
